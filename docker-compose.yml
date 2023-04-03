@@ -1,0 +1,34 @@
+version: "3.1"
+services:
+  webserver:
+    build: .
+    container_name: aula.uniasselvi.dev
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - 8000:80
+    networks:
+      - mynet
+  mysql:
+    image: mysql
+    container_name: db.uniasselvi.dev
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - mynet
+  mysqladmin:
+    image: phpmyadmin
+    container_name: admin.uniasselvi.dev
+    ports:
+      - 8550:80
+    environment:
+      PMA_HOST: db.uniasselvi.dev
+      PMA_USER: root
+      PMA_PASSWORD: root
+    networks:
+      - mynet
+networks:
+  mynet:
+    external: true
