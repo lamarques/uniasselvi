@@ -10,3 +10,5 @@
 - Host: db.uniasselvi.dev
 - user: root
 - senha: root
+
+Fiz essa estrutura para facilitar o uso dos queridos colegas. Grande Abraço a Todos
